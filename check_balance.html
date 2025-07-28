@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Check Balance</title>
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(120deg, #e0eafc 0%, #c2e9fb 100%); color: #22223b; min-height: 100vh; }
+    header { background: #2d3a4b; color: #fff; padding: 30px 0 10px 0; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    header h1 { margin: 0 0 10px 0; font-size: 2.2rem; letter-spacing: 2px; }
+    nav { margin: 30px 0 0 0; text-align: center; }
+    .nav-btn { background: #fff; color: #2d3a4b; border: none; border-radius: 20px; margin: 0 15px; padding: 12px 32px; font-size: 1.1rem; font-weight: 500; cursor: pointer; box-shadow: 0 2px 8px rgba(60,60,120,0.07); transition: background 0.2s, color 0.2s; }
+    .nav-btn:hover { background: #4fc3f7; color: #fff; }
+    main { max-width: 500px; margin: 40px auto 0 auto; padding: 0 20px; text-align: center; }
+    form { background: #fff; border-radius: 15px; box-shadow: 0 4px 16px rgba(60,60,120,0.08); padding: 30px 20px; margin-top: 30px; }
+    label { font-weight: 600; color: #2d3a4b; }
+    input[type="text"] { width: 80%; padding: 10px; margin: 15px 0; border: 2px solid #c2e9fb; border-radius: 8px; font-size: 1rem; }
+    button[type="submit"] { background: #2d3a4b; color: #fff; border: none; border-radius: 20px; padding: 10px 30px; font-size: 1.1rem; font-weight: 500; cursor: pointer; margin-top: 10px; transition: background 0.2s; }
+    button[type="submit"]:hover { background: #4fc3f7; color: #fff; }
+    .back-link { display: block; margin: 25px auto 0 auto; color: #2d3a4b; text-decoration: none; font-weight: 500; }
+    .back-link:hover { text-decoration: underline; color: #4fc3f7; }
+    footer { background: #2d3a4b; color: #fff; text-align: center; padding: 18px 0 10px 0; position: fixed; width: 100%; bottom: 0; left: 0; font-size: 1rem; letter-spacing: 1px; }
+    .balance-card {
+      margin: 30px auto 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(60,60,120,0.10);
+      padding: 32px 20px;
+      max-width: 350px;
+      text-align: center;
+      border: 2px solid #4fc3f7;
+      position: relative;
+      animation: pop-in 0.4s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    .balance-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .balance-label {
+      font-size: 1.1rem;
+      color: #1976d2;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .balance-amount {
+      font-size: 2.2rem;
+      color: #22223b;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .balance-success {
+      color: #43a047;
+      font-size: 1rem;
+      margin-top: 6px;
+    }
+    .error-box {
+      margin: 30px auto 0 auto;
+      background: #ffebee;
+      color: #c62828;
+      border: 1.5px solid #e57373;
+      border-radius: 10px;
+      padding: 18px 10px;
+      max-width: 350px;
+      font-size: 1.1rem;
+      text-align: center;
+      font-weight: 500;
+    }
+    @keyframes pop-in {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @media (max-width: 600px) { .nav-btn { font-size: 1rem; margin: 0 5px; padding: 10px 12px; } header h1 { font-size: 1.3rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ATM - Check Balance</h1>
+  </header>
+  <nav>
+    <button class="nav-btn" onclick="location.href='/'">Home</button>
+    <button class="nav-btn" onclick="location.href='/withdraw'">Withdraw</button>
+    <button class="nav-btn" onclick="location.href='/deposit'">Deposit</button>
+    <button class="nav-btn" onclick="location.href='/contact'">Contact</button>
+  </nav>
+  <main>
+    <form action="/check_balance" method="post">
+      <label for="account">Account Number:</label><br>
+      <input type="text" id="account" name="account" required value="{{ account if account else '' }}"><br>
+      <button type="submit">Check Balance</button>
+    </form>
+    {% if balance is not none %}
+    <div class="balance-card">
+      <div class="balance-icon">💳</div>
+      <div class="balance-label">Account {{ account }}</div>
+      <div class="balance-amount">₹{{ '{:,.2f}'.format(balance) }}</div>
+      <div class="balance-success">Balance fetched successfully!</div>
+    </div>
+    {% endif %}
+    {% if error %}
+    <div class="error-box">{{ error }}</div>
+    {% endif %}
+    <a class="back-link" href="/">Back to Home</a>
+  </main>
+  <footer>
+    <p>&copy; 2025 ATM Web App</p>
+  </footer>
+</body>
+</html>

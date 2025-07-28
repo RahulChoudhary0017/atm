@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Support</title>
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(120deg, #e0eafc 0%, #c2e9fb 100%); color: #22223b; min-height: 100vh; }
+    header { background: #2d3a4b; color: #fff; padding: 30px 0 10px 0; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    header h1 { margin: 0 0 10px 0; font-size: 2.2rem; letter-spacing: 2px; }
+    nav { margin: 30px 0 0 0; text-align: center; }
+    .nav-btn { background: #fff; color: #2d3a4b; border: none; border-radius: 20px; margin: 0 15px; padding: 12px 32px; font-size: 1.1rem; font-weight: 500; cursor: pointer; box-shadow: 0 2px 8px rgba(60,60,120,0.07); transition: background 0.2s, color 0.2s; }
+    .nav-btn:hover { background: #4fc3f7; color: #fff; }
+    main { max-width: 500px; margin: 40px auto 0 auto; padding: 0 20px; text-align: center; }
+    form { background: #fff; border-radius: 15px; box-shadow: 0 4px 16px rgba(60,60,120,0.08); padding: 30px 20px; margin-top: 30px; }
+    label { font-weight: 600; color: #2d3a4b; }
+    input[type="text"], textarea { width: 80%; padding: 10px; margin: 15px 0; border: 2px solid #c2e9fb; border-radius: 8px; font-size: 1rem; }
+    textarea { min-height: 100px; resize: vertical; }
+    button[type="submit"] { background: #2d3a4b; color: #fff; border: none; border-radius: 20px; padding: 10px 30px; font-size: 1.1rem; font-weight: 500; cursor: pointer; margin-top: 10px; transition: background 0.2s; }
+    button[type="submit"]:hover { background: #4fc3f7; color: #fff; }
+    .back-link { display: block; margin: 25px auto 0 auto; color: #2d3a4b; text-decoration: none; font-weight: 500; }
+    .back-link:hover { text-decoration: underline; color: #4fc3f7; }
+    footer { background: #2d3a4b; color: #fff; text-align: center; padding: 18px 0 10px 0; position: fixed; width: 100%; bottom: 0; left: 0; font-size: 1rem; letter-spacing: 1px; }
+    @media (max-width: 600px) { .nav-btn { font-size: 1rem; margin: 0 5px; padding: 10px 12px; } header h1 { font-size: 1.3rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ATM - Contact Support</h1>
+  </header>
+  <nav>
+    <button class="nav-btn" onclick="location.href='/'">Home</button>
+    <button class="nav-btn" onclick="location.href='/check_balance'">Check Balance</button>
+    <button class="nav-btn" onclick="location.href='/withdraw'">Withdraw</button>
+    <button class="nav-btn" onclick="location.href='/deposit'">Deposit</button>
+  </nav>
+  <main>
+    <form action="/contact" method="post">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" required><br>
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" required></textarea><br>
+      <button type="submit">Send</button>
+    </form>
+    <a class="back-link" href="/">Back to Home</a>
+  </main>
+  <footer>
+    <p>&copy; 2025 ATM Web App</p>
+  </footer>
+</body>
+</html>
+

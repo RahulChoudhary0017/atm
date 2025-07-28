@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM - Money Transfer</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f6fb; margin: 0; }
+        .container { max-width: 400px; margin: 60px auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px #0001; padding: 32px; }
+        h2 { text-align: center; color: #2d3a4b; }
+        form { display: flex; flex-direction: column; gap: 18px; }
+        label { font-weight: 500; color: #2d3a4b; }
+        input[type="text"], input[type="number"] { padding: 10px; border: 1px solid #cfd8dc; border-radius: 6px; font-size: 1rem; }
+        button { background: #1976d2; color: #fff; border: none; padding: 12px; border-radius: 6px; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+        button:hover { background: #125ea2; }
+        .nav { display: flex; justify-content: center; gap: 12px; margin-bottom: 24px; }
+        .nav button { background: #e3eaf2; color: #1976d2; border: none; padding: 8px 16px; border-radius: 5px; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+        .nav button:hover { background: #cfd8dc; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <form action="/" method="get"><button type="submit">Home</button></form>
+            <form action="/check_balance" method="get"><button type="submit">Check Balance</button></form>
+            <form action="/deposit" method="get"><button type="submit">Deposit</button></form>
+            <form action="/withdraw" method="get"><button type="submit">Withdraw</button></form>
+            <form action="/transfer" method="get"><button type="submit">Transfer</button></form>
+            <form action="/contact" method="get"><button type="submit">Contact</button></form>
+        </div>
+        <h2>Money Transfer</h2>
+        <form method="post">
+            <label for="from_account">From Account Number</label>
+            <input type="text" id="from_account" name="from_account" required>
+            <label for="to_account">To Account Number</label>
+            <input type="text" id="to_account" name="to_account" required>
+            <label for="amount">Amount (₹)</label>
+            <input type="number" id="amount" name="amount" min="1" required>
+            <button type="submit">Transfer</button>
+        </form>
+    </div>
+</body>
+</html> 
